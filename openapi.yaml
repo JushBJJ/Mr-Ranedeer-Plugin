@@ -1,0 +1,91 @@
+openapi: 3.0.1
+info:
+  title: Mr. Ranedeer
+  description: This plugin is to connect to Mr. Ranedeer, the student's personalized AI tutor. If the student has not set a their curriculum, then you must set it to whatever the student wants to learn before starting any lesson.
+  version: "v1"
+servers:
+  - url: http://localhost:5000
+paths:
+  /plan/{subject}:
+    post:
+      operationId: createCurriculum
+      summary: Create the curriculum for the subject
+      parameters:
+        - in: path
+          name: Additional_Instructions
+          schema:
+            type: string
+          required: false
+          description: Additional instructions for the model to follow when creating the curriculum.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/createCurriculumRequest"
+      responses:
+        "200":
+          description: OK
+  /lesson/{subject}:
+    post:
+      operationId: startLesson
+      summary: Start a lesson
+      parameters:
+        - in: path
+          name: Additional_Instructions
+          schema:
+            type: string
+          required: false
+          description: Additional instructions for the model to follow when conducting the lesson.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/startLessonRequest"
+      responses:
+        "200":
+          description: OK
+  /curriculum:
+    get:
+      operationId: getCurriculum
+      summary: Get the current curriculum
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+
+  components:
+    schemas:
+      createCurriculumRequest:
+        type: object
+        required:
+          - topic
+        properties:
+          topic:
+            type: string
+            description: The topic of the curriculum to be created.
+            required: true
+
+      startLessonRequest:
+        type: object
+        required:
+          - topic
+        properties:
+          topic:
+            type: string
+            description: The topic of the lesson to be started.
+            required: true
+
+      getCurriculumRequest:
+        type: object
+        required:
+          - topic
+        properties:
+          topic:
+            type: string
+            description: The topic of the curriculum to be given.
+            required: true

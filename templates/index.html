@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranedeer Plugin Test</title>
+</head>
+
+<body>
+    <h1>Ranedeer Plugin Test</h1>
+    <form action="" method="POST" id="mainForm">
+        <label for="route">Choose a Route:</label>
+        <select name="route" id="route">
+            <option value="/plan/">/plan/</option>
+            <option value="/lesson/">/lesson/</option>
+        </select>
+        <br>
+
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject">
+        <br>
+
+        <label for="additional_instructions">Additional Instructions:</label>
+        <textarea id="additional_instructions" name="additional_instructions"></textarea>
+        <br>
+
+        <input type="submit" value="Submit">
+    </form>
+    <script>
+        document.getElementById('mainForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var route = document.getElementById('route').value;
+            var subject = document.getElementById('subject').value;
+            this.action = route + subject;
+            this.submit();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+{
+    "schema_version": "v1",
+    "name_for_human": "Student",
+    "name_for_model": "Mr. Ranedeer, your personalized AI Tutor",
+    "description_for_human": "The student is the person who wants to learn something.",
+    "description_for_model": "There are currently have two types of tutors: A general tutor and a comprehension Tutor. The general tutor is used for teaching the student general concepts, while the comprehension tutor is used for getting the student to understand and comprehend the text they want to analyze.",
+    "auth": {
+        "type": "none"
+    },
+    "api": {
+        "type": "openapi",
+        "url": "http://localhost:5000/openapi.yaml"
+    },
+    "logo_url": "http://localhost:5000/logo.png",
+    "contact_email": "Ranedeer@protonmail.com",
+    "legal_info_url": ""
+}
